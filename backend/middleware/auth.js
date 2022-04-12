@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const connectdb = require("../connectdb.js");
+const connectdb = require("../connectdb");
 const mysql = require("mysql");
 
 module.exports = (req, res, next) => {

@@ -1,20 +1,19 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv").config();
-const xss = require("xss-clean"); // 
+const xss = require("xss-clean"); // pour nettoyer les entrées utilisateur provenant du corps POST, des requêtes GET et des paramètres d'URL
 const helmet = require("helmet");
-
+const cors = require("cors");
 //const routesPosts = require("./routes/routesPosts");
 const routesUsers = require("./routes/routesUsers");
 //const routesMod = require("./routes/routesMod");
-const path = require('path');
-
-
+const path = require("path");
 
 app.use(express());
 app.use(helmet());
 
 
+//(CORS) ajout des headers pour que tous les origines puissent communiquer entre eux
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -33,7 +32,6 @@ app.use((req, res, next) => {
 app.use("/api/auth", routesUsers);
 
 //app.use("/api/moderation", routesMod);
-app.use('../images',express.static(path.join(__dirname,'images'))) // gestion des fichiers avec multer
-
+app.use("../images", express.static(path.join(__dirname, "images"))); // gestion des fichiers avec multer
 
 module.exports = app;

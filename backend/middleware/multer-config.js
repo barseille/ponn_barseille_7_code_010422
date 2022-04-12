@@ -1,5 +1,11 @@
+/*
+* multer est un package de gestion de fichiers.
+* méthode diskStorage() configure le chemin et le nom du fichier pour les fichiers entrants.
+* méthode single() crée un middleware qui capture les fichiers d'un certain type (passé en argument) 
+* et les enregistre au système de fichiers du serveur à l'aide du storage configuré
+*/
 const multer = require('multer');
-const path = require('path');
+
 
 const MIME_TYPES = {
   'image/jpg': 'jpg',

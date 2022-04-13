@@ -8,7 +8,7 @@
       </v-card-title>
 
       <v-card-text>
-        <v-form ref="form" class="ma-3" v-model="valid">
+        <v-form ref="form" class="ma-3" v-model="valid" method="post">
           <v-text-field
             v-model="dataPost.title"
             color="black"
@@ -33,9 +33,7 @@
             name="image"
             accept="image/png, image/jpeg, image/gif, image/webp"
           />
-          <button @click="onUpload" class="publier btn btn-primary">
-            Publier
-          </button>
+          
         </v-form>
       </v-card-text>
 
@@ -96,6 +94,10 @@ export default {
           this.msg = true;
         });
     },
+       onFileSelected(event){
+            this.selectedFile = event.target.files[0];
+            console.log(this.selectedFile);
+        },
   },
 
   components: {

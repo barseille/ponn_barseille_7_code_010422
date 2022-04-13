@@ -5,7 +5,7 @@ const mysql = require("mysql");
 const UserModels = require("../Models/UserModels.js");
 
 let userModels = new UserModels();
-
+ // inscription
 exports.signup = (req, res, next) => {
   console.log(req.body);
   let email = req.body.email;

@@ -17,9 +17,9 @@ class PostsModels {
   createPost(sqlInserts) {
     let sql = "INSERT INTO posts VALUES(NULL, ?, ?, ?, NOW(), 0)";
     sql = mysql.format(sql, sqlInserts);
-    return new Promise((resolve) => {
+    return new Promise((resolve,reject) => {
       connectdb.query(sql, function (err, result, fields) {
-        if (err) throw err;
+        if (err) reject({ error: "Erreur dans la publication:" + err });
         resolve({ message: "Nouveau post !" });
       });
     });

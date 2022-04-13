@@ -6,11 +6,11 @@ const jwt = require("jsonwebtoken");
 class UserModels {
   constructor() {}
   signup(sqlInserts) {
-    let sql = "INSERT INTO users VALUES(NULL, ?, ?, ?, ?, NULL)";
+    let sql = "INSERT INTO users VALUES(NULL, ?, ?, ?, NULL, ?)";
     sql = mysql.format(sql, sqlInserts);
     return new Promise((resolve, reject) => {
       connectdb.query(sql, function (err, result) {
-        if (err) reject({ error: "Erreur dans l'inscription" });
+        if (err) reject({ error: "Erreur dans l'inscription:" + err });
         resolve({ message: "Nouvel utilisateur !" });
       });
     });
@@ -32,7 +32,7 @@ class UserModels {
                 userId: result[0].id,
                 token: jwt.sign(
                   { userId: result[0].id, moderation: result[0].moderation },
-                  "RANDOM_TOKEN_SECRET",
+                  "BARSEILLE_TOKEN_SECRET",
                   { expiresIn: "24h" }
                 ),
                 moderation: result[0].moderation,

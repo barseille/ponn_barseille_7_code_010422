@@ -11,17 +11,25 @@ exports.getAllPosts = (req, res, next) => {
   });
 };
 exports.createPost = (req, res, next) => {
-  let title = req.body.title;
-  let userId = req.body.userId;
-  let content = req.body.content;
+  
+  const data = JSON.parse(req.body.data);
+  let title = data.title;
+  let userId = data.userId;
+  let content = data.content;
   let sqlInserts = [userId, title, content];
-  postsModels.createPost(sqlInserts).then((response) => {
-    res.status(201).json(JSON.stringify(response));
-  });
+  postsModels
+    .createPost(sqlInserts)
+    .then((response) => {
+      res.status(201).json(JSON.stringify(response));
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(400).json(JSON.stringify(error));
+    });
 };
 exports.updatePost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let title = req.body.title;
   let content = req.body.content;
@@ -40,7 +48,7 @@ exports.updatePost = (req, res, next) => {
 };
 exports.deletePost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let postId = req.params.id;
   let sqlInserts1 = [postId];
@@ -75,7 +83,7 @@ exports.createComment = (req, res, next) => {
 
 exports.updateComment = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let content = req.body.content;
   let commentId = req.params.id;
@@ -100,7 +108,7 @@ exports.deleteComment = (req, res, next) => {
 };
 exports.deleteComment = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let commentId = req.params.id;
   let sqlInserts1 = [commentId];

@@ -48,6 +48,7 @@
                   class="success"
                   v-bind="attrs"
                   v-on="on"
+                  @click="sendSignup()"
                 >
                   Confirmer
                 </v-btn>
@@ -61,9 +62,7 @@
                 <v-divider></v-divider>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn @click="sendSignup()" class="success">
-                    Se connecter
-                  </v-btn>
+                  <v-btn class="success"> Se connecter </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -119,7 +118,7 @@ export default {
   },
   methods: {
     sendSignup() {
-      this.dataSignupS = JSON.stringify(this.dataSignup);
+      this.dataSignupS = this.dataSignup;
       axios
         .post("http://localhost:3000/api/auth/signup", this.dataSignupS, {
           headers: { "Content-Type": "application/json" },

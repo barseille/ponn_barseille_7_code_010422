@@ -8,10 +8,11 @@ const routesPosts = require("./routes/routesPosts");
 const routesUsers = require("./routes/routesUsers");
 const routesMod = require("./routes/routesMod");
 const path = require("path");
-
+const mysql = require("mysql");
+const bodyparser = require("body-parser");
+app.use(bodyparser.json());
 app.use(xss());
 app.use(helmet());
-
 
 //(CORS) ajout des headers pour que tous les origines puissent communiquer entre eux
 app.use((req, res, next) => {

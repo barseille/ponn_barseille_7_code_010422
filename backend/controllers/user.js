@@ -7,6 +7,7 @@ const UserModels = require("../Models/UserModels.js");
 let userModels = new UserModels();
 
 exports.signup = (req, res, next) => {
+  console.log(req.body);
   let email = req.body.email;
   let password = req.body.password;
   let firstName = req.body.firstName;
@@ -43,7 +44,7 @@ exports.login = (req, res, next) => {
 };
 exports.seeMyProfile = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let sqlInserts = [userId];
   userModels
@@ -58,7 +59,7 @@ exports.seeMyProfile = (req, res, next) => {
 };
 exports.updateUser = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
@@ -76,7 +77,7 @@ exports.updateUser = (req, res, next) => {
 
 exports.deleteUser = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const userId = decodedToken.userId;
   let sqlInserts = [userId];
   userModels

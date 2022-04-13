@@ -33,7 +33,6 @@
             name="image"
             accept="image/png, image/jpeg, image/gif, image/webp"
           />
-          
         </v-form>
       </v-card-text>
 
@@ -73,11 +72,15 @@ export default {
   },
   methods: {
     sendPost() {
-      this.dataPostS = JSON.stringify(this.dataPost);
+      this.dataPostS = new FormData();
+
+      this.dataPostS.append("img", this.img);
+
+      this.dataPostS.append("data", JSON.stringify(this.dataPost));
+
       axios
         .post("http://localhost:3000/api/posts/", this.dataPostS, {
           headers: {
-            "Content-Type": "application/json",
             Authorization: "Bearer " + localStorage.token,
           },
         })
@@ -94,10 +97,10 @@ export default {
           this.msg = true;
         });
     },
-       onFileSelected(event){
-            this.selectedFile = event.target.files[0];
-            console.log(this.selectedFile);
-        },
+    onFileSelected(event) {
+      this.img = event.target.files[0];
+      console.log(this.img);
+    },
   },
 
   components: {

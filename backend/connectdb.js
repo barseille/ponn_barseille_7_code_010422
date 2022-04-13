@@ -7,7 +7,8 @@ let connectdb = mysql.createConnection({
   host: "localhost",
   user:process.env.DB_USERNAME,
   password:process.env.DB_PASSWORD,
-  // database: process.env.DB_DATABASE,
+  database: process.env.DB_DATABASE,
+  port:3306
 
 
 });
@@ -22,7 +23,7 @@ connectdb.connect(function(err) {
     return;
   }
 
-  console.log('connected as id ' + connection.threadId);
+  console.log('connected as id ' + connectdb.threadId);
 });
 
 

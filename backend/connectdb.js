@@ -27,16 +27,4 @@ connectdb.connect(function(err) {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = connectdb;

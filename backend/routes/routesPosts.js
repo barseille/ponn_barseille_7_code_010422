@@ -12,8 +12,8 @@ try {
   router.put("/:id", auth, multer, postsCtrl.updatePost);
   router.delete("/:id", auth, postsCtrl.deletePost);
 
-  router.get("/likes", auth, postsCtrl.getAllLikes);
-  router.post("/:id/like", auth, postsCtrl.postLike);
+  // router.get("/likes", auth, postsCtrl.getAllLikes);
+  // router.post("/:id/like", auth, postsCtrl.postLike);
 
   router.get("/:id/comments", auth, postsCtrl.getComments);
   router.post("/:id/comments", auth, multer, postsCtrl.createComment);

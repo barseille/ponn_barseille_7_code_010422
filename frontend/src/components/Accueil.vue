@@ -65,7 +65,7 @@
           <!--like-->
 
           <v-card-text class="py-0">
-            <v-btn
+            <!-- <v-btn
               icon
               fab
               title="J'aime"
@@ -75,7 +75,7 @@
             >
               <v-icon>mdi-thumb-up</v-icon>
               {{ post.likes }}
-            </v-btn>
+            </v-btn> -->
 
             <!--bouton commentaires-->
 
@@ -225,7 +225,7 @@ export default {
       admin: "",
       afficheFrmCm: false,
       allPosts: [],
-      allLikes: [],
+      // allLikes: [],
       allComments: [],
       postId: "",
       dialogUpCom: false,
@@ -255,15 +255,15 @@ export default {
         content: "",
         userId: "",
       },
-      dataComS: "",
-      dataLike: {
-        userId: "",
-        nbLikes: "",
-        postId: "",
-        liked: false,
-      },
-      dataLikeS: "",
-      form: true,
+      // dataComS: "",
+      // dataLike: {
+      //   userId: "",
+      //   nbLikes: "",
+      //   postId: "",
+      //   liked: false,
+      // },
+      // dataLikeS: "",
+      // form: true,
     };
   },
   methods: {
@@ -409,41 +409,41 @@ export default {
     afficheFormCom() {
       this.afficheFrmCm = true;
     },
-    likePost(postId, nbLikes) {
-      this.allLikes.forEach((element) => {
-        if (element.postId == postId && element.userId == localStorage.userId) {
-          this.dataLike.nbLikes = nbLikes + -1;
-          this.dataLike.liked = true;
-        }
-      });
-      if (this.dataLike.liked == false) {
-        this.dataLike.nbLikes = nbLikes + 1;
-      }
-      this.dataLike.userId = localStorage.userId;
-      this.dataLike.postId = postId;
-      this.dataLikeS = JSON.stringify(this.dataLike);
-      axios
-        .post(
-          "http://localhost:3000/api/posts/" + postId + "/like",
-          this.dataLikeS,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.token,
-            },
-          }
-        )
-        .then((response) => {
-          let rep = JSON.parse(response.data);
-          console.log(rep.message);
-          this.dataLike.liked = false;
-          window.location.assign("http://localhost:8080/Accueil");
-        })
-        .catch((error) => {
-          console.log(error);
-          this.dataLike.liked = false;
-        });
-    },
+    // likePost(postId, nbLikes) {
+    //   this.allLikes.forEach((element) => {
+    //     if (element.postId == postId && element.userId == localStorage.userId) {
+    //       this.dataLike.nbLikes = nbLikes + -1;
+    //       this.dataLike.liked = true;
+    //     }
+    //   });
+    //   if (this.dataLike.liked == false) {
+    //     this.dataLike.nbLikes = nbLikes + 1;
+    //   }
+    //   this.dataLike.userId = localStorage.userId;
+    //   this.dataLike.postId = postId;
+    //   this.dataLikeS = JSON.stringify(this.dataLike);
+    //   axios
+    //     .post(
+    //       "http://localhost:3000/api/posts/" + postId + "/like",
+    //       this.dataLikeS,
+    //       {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           Authorization: "Bearer " + localStorage.token,
+    //         },
+    //       }
+    //     )
+    //     .then((response) => {
+    //       let rep = JSON.parse(response.data);
+    //       console.log(rep.message);
+    //       this.dataLike.liked = false;
+    //       window.location.assign("http://localhost:8080/Accueil");
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //       this.dataLike.liked = false;
+    //     });
+    // },
   },
   components: {
     "top-header": TopHeader,
@@ -461,17 +461,17 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    axios
-      .get("http://localhost:3000/api/posts/likes", {
-        headers: { Authorization: "Bearer " + localStorage.token },
-      })
-      .then((response) => {
-        let likes = JSON.parse(response.data);
-        this.allLikes = likes;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .get("http://localhost:3000/api/posts/likes", {
+    //     headers: { Authorization: "Bearer " + localStorage.token },
+    //   })
+    //   .then((response) => {
+    //     let likes = JSON.parse(response.data);
+    //     this.allLikes = likes;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   },
 };
 </script>

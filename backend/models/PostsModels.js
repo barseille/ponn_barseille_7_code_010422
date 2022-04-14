@@ -126,6 +126,7 @@ class PostsModels {
     });
   }
 
+  /*
   getAllLikes() {
     let sql = "SELECT * FROM likes";
     return new Promise((resolve) => {
@@ -160,6 +161,8 @@ class PostsModels {
       }
     });
   }
+  */
 }
+
 
 module.exports = PostsModels;

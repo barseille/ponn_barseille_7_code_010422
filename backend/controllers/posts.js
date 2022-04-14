@@ -124,6 +124,7 @@ exports.deleteComment = (req, res, next) => {
     });
 };
 
+/*
 exports.getAllLikes = (req, res, next) => {
   postsModels.getAllLikes().then((response) => {
     res.status(200).json(JSON.stringify(response));
@@ -141,3 +142,4 @@ exports.postLike = (req, res, next) => {
       res.status(201).json(JSON.stringify(response));
     });
 };
+*/

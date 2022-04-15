@@ -31,6 +31,6 @@ app.use((req, res, next) => {
 app.use("/api/posts", routesPosts);
 app.use("/api/auth", routesUsers);
 app.use("/api/moderation", routesMod);
-app.use("../images", express.static(path.join(__dirname, "images"))); // gestion des fichiers avec multer
+app.use("/images", express.static(path.join(__dirname, "images"))); // gestion des fichiers avec multer
 
 module.exports = app;

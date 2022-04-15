@@ -50,7 +50,8 @@
               </v-btn>
             </v-card-actions>
           </div>
-
+          {{ post.img }}
+          <img :src="`http://locahost:3000/images/${post.img}`" />
           <!--mon post-->
 
           <v-card-subtitle class="forum__post__name">
@@ -409,41 +410,7 @@ export default {
     afficheFormCom() {
       this.afficheFrmCm = true;
     },
-    // likePost(postId, nbLikes) {
-    //   this.allLikes.forEach((element) => {
-    //     if (element.postId == postId && element.userId == localStorage.userId) {
-    //       this.dataLike.nbLikes = nbLikes + -1;
-    //       this.dataLike.liked = true;
-    //     }
-    //   });
-    //   if (this.dataLike.liked == false) {
-    //     this.dataLike.nbLikes = nbLikes + 1;
-    //   }
-    //   this.dataLike.userId = localStorage.userId;
-    //   this.dataLike.postId = postId;
-    //   this.dataLikeS = JSON.stringify(this.dataLike);
-    //   axios
-    //     .post(
-    //       "http://localhost:3000/api/posts/" + postId + "/like",
-    //       this.dataLikeS,
-    //       {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           Authorization: "Bearer " + localStorage.token,
-    //         },
-    //       }
-    //     )
-    //     .then((response) => {
-    //       let rep = JSON.parse(response.data);
-    //       console.log(rep.message);
-    //       this.dataLike.liked = false;
-    //       window.location.assign("http://localhost:8080/Accueil");
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //       this.dataLike.liked = false;
-    //     });
-    // },
+
   },
   components: {
     "top-header": TopHeader,
@@ -457,6 +424,7 @@ export default {
       .then((response) => {
         let posts = JSON.parse(response.data);
         this.allPosts = posts;
+        console.log(this.allPosts);
       })
       .catch((error) => {
         console.log(error);

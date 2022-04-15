@@ -1,5 +1,6 @@
 <template>
   <v-app id="auth">
+    
     <v-container class="auth">
       <div class="auth__boutons">
         <v-btn

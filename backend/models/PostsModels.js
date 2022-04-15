@@ -6,7 +6,7 @@ class PostsModels {
 
   getAllPosts() {
     let sql =
-      "SELECT posts.id, posts.userId, posts.title, posts.content, DATE_FORMAT(DATE(posts.date), '%d/%m/%Y') AS date, TIME(posts.date) AS time, posts.likes,posts.img, users.lastName, users.firstName FROM posts JOIN users ON posts.userId = users.id ORDER BY posts.date DESC";
+      "SELECT posts.id, posts.userId, posts.title, posts.content, DATE_FORMAT(DATE(posts.date), '%d/%m/%Y') AS date, TIME(posts.date) AS time, posts.likes, posts.img, users.lastName, users.firstName FROM posts JOIN users ON posts.userId = users.id ORDER BY posts.date DESC";
     return new Promise((resolve) => {
       connectdb.query(sql, function (err, result, fields) {
         if (err) throw err;
@@ -15,9 +15,9 @@ class PostsModels {
     });
   }
   createPost(sqlInserts) {
-    let sql = "INSERT INTO posts VALUES(NULL, ?, ?, ?, NOW(), 0,?)";
+    let sql = "INSERT INTO posts VALUES(NULL, ?, ?, ?, NOW(), 0, ?)";
     sql = mysql.format(sql, sqlInserts);
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       connectdb.query(sql, function (err, result, fields) {
         if (err) reject({ error: "Erreur dans la publication:" + err });
         resolve({ message: "Nouveau post !" });
@@ -163,6 +163,5 @@ class PostsModels {
   }
   */
 }
-
 
 module.exports = PostsModels;

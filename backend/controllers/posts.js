@@ -11,12 +11,14 @@ exports.getAllPosts = (req, res, next) => {
   });
 };
 exports.createPost = (req, res, next) => {
-  
   const data = JSON.parse(req.body.data);
-  let title = data.title;
-  let userId = data.userId;
-  let content = data.content;
-  let sqlInserts = [userId, title, content];
+  const title = data.title;
+  const userId = data.userId;
+  const content = data.content;
+  const imageUrl = `${req.protocol}://${req.get("host")}/images/${
+    req.file.filename
+  }`;
+  let sqlInserts = [userId, title, content, imageUrl];
   postsModels
     .createPost(sqlInserts)
     .then((response) => {

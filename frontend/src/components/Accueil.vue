@@ -50,8 +50,7 @@
               </v-btn>
             </v-card-actions>
           </div>
-          {{ post.img }}
-          <img :src="`http://locahost:3000/images/${post.img}`" />
+          <img v-if="post.img" :src="post.img" alt="" />
           <!--mon post-->
 
           <v-card-subtitle class="forum__post__name">
@@ -410,7 +409,6 @@ export default {
     afficheFormCom() {
       this.afficheFrmCm = true;
     },
-
   },
   components: {
     "top-header": TopHeader,

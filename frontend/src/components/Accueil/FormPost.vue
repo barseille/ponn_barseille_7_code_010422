@@ -73,10 +73,8 @@ export default {
   methods: {
     sendPost() {
       this.dataPostS = new FormData();
-
-      this.dataPostS.append("img", this.img);
-
       this.dataPostS.append("data", JSON.stringify(this.dataPost));
+      this.dataPostS.append("img", this.img);
 
       axios
         .post("http://localhost:3000/api/posts/", this.dataPostS, {

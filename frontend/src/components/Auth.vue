@@ -5,7 +5,7 @@
       <div class="auth__boutons">
         <v-btn
           class="auth__boutons--ind"
-          color="red white--text"
+          color="blue white--text"
           @click="component = 'signup'"
           rounded
         >
@@ -13,7 +13,7 @@
         </v-btn>
         <v-btn
           class="auth__boutons--ind"
-          color="red white--text white--hover"
+          color="blue white--text"
           @click="component = 'login'"
           rounded
         >
@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss">
 #auth {
-  background: no-repeat center top/50% url("../assets/icon-left-font.png");
+  background: no-repeat center top/50% url("../assets/icon-left-font-monochrome-black.png");
   display: flex;
   flex-direction: row;
 }

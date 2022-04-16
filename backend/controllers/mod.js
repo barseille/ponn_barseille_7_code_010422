@@ -7,7 +7,7 @@ let modModels = new ModModels();
 
 exports.getAllPosts = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const mod = decodedToken.moderation;
   if (mod == 1) {
     modModels.getAllPosts().then((response) => {
@@ -19,7 +19,7 @@ exports.getAllPosts = (req, res, next) => {
 };
 exports.deletePost = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const mod = decodedToken.moderation;
   console.log(mod);
   if (mod == 1) {
@@ -34,7 +34,7 @@ exports.deletePost = (req, res, next) => {
 };
 exports.getAllComments = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const mod = decodedToken.moderation;
   if (mod == 1) {
     modModels.getAllComments().then((response) => {
@@ -46,7 +46,7 @@ exports.getAllComments = (req, res, next) => {
 };
 exports.deleteComment = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  const decodedToken = jwt.verify(token, "BARSEILLE_TOKEN_SECRET");
   const mod = decodedToken.moderation;
   if (mod == 1) {
     let commentId = req.params.id;

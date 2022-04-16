@@ -50,7 +50,7 @@
               </v-btn>
             </v-card-actions>
           </div>
-          <img v-if="post.img" :src="post.img" alt="" />
+          <img v-if="post.img" :src="post.img" alt="" class="imgPost" />
           <!--mon post-->
 
           <v-card-subtitle class="forum__post__name">
@@ -65,24 +65,13 @@
           <!--like-->
 
           <v-card-text class="py-0">
-            <!-- <v-btn
-              icon
-              fab
-              title="J'aime"
-              class="ma-3"
-              color="green"
-              @click="likePost(post.id, post.likes)"
-            >
-              <v-icon>mdi-thumb-up</v-icon>
-              {{ post.likes }}
-            </v-btn> -->
-
             <!--bouton commentaires-->
 
             <v-btn
               text
               @click="afficheCom(post.id)"
               title="Voir les commentaires"
+              
             >
               <v-icon>mdi-comment-eye</v-icon> Voir les commentaires
             </v-btn>
@@ -427,23 +416,15 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    // axios
-    //   .get("http://localhost:3000/api/posts/likes", {
-    //     headers: { Authorization: "Bearer " + localStorage.token },
-    //   })
-    //   .then((response) => {
-    //     let likes = JSON.parse(response.data);
-    //     this.allLikes = likes;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   },
 };
 </script>
 <style lang="scss">
 h1 {
   text-align: center;
+}
+.imgPost {
+  max-width: 300px;
 }
 .forum {
   &__comments {

@@ -71,7 +71,6 @@
               text
               @click="afficheCom(post.id)"
               title="Voir les commentaires"
-              
             >
               <v-icon>mdi-comment-eye</v-icon> Voir les commentaires
             </v-btn>
@@ -173,7 +172,7 @@
             </v-btn>
 
             <v-card v-if="afficheFrmCm">
-              <v-form ref="form" class="ma-3" v-model="valid" v-if="form">
+              <v-form ref="form" class="ma-3" v-model="valid">
                 <v-textarea
                   background-color="#ECECEC"
                   color="black"
@@ -274,6 +273,7 @@ export default {
     sendCom(pId) {
       this.dataCom.userId = this.userId;
       this.dataComS = JSON.stringify(this.dataCom);
+      console.log(this.dataComS);
       axios
         .post(
           "http://localhost:3000/api/posts/" + pId + "/comments",
@@ -291,6 +291,7 @@ export default {
           this.dataCom.content = "";
           this.dataCom.userId = "";
           this.afficheFrmCm = false;
+          this.afficheCom(pId);
         })
         .catch((error) => {
           console.log(error);

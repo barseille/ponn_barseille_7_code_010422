@@ -114,6 +114,7 @@ export default {
       form: true,
       msg: false,
       message: "",
+      dialog: false,
     };
   },
   methods: {

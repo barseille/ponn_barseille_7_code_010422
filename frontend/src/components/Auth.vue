@@ -5,7 +5,7 @@
       <div class="auth__boutons">
         <v-btn
           class="auth__boutons--ind"
-          color="blue white--text"
+          color="red white--text"
           @click="component = 'signup'"
           rounded
         >
@@ -13,7 +13,7 @@
         </v-btn>
         <v-btn
           class="auth__boutons--ind"
-          color="blue white--text"
+          color="red white--text"
           @click="component = 'login'"
           rounded
         >
@@ -48,9 +48,11 @@ export default {
 
 <style lang="scss">
 #auth {
-  background: no-repeat center top/50% url("../assets/icon-left-font-monochrome-black.png");
+  background: no-repeat center top/40% url("../assets/groupomania_logo_orange.png");
   display: flex;
   flex-direction: row;
+  
+  width:100%;
 }
 
 .auth {
@@ -59,12 +61,13 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 45%;
+    margin-top: 65%;
     margin-bottom: 2%;
     &--ind {
       margin-top: 5%;
       width: 150px;
     }
   }
+
 }
 </style>

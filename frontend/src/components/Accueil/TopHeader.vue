@@ -2,7 +2,8 @@
   <div class="head">
     <v-navigation-drawer
       v-model="drawer"
-      color="#30475e"
+      color=red
+     
       expand-on-hover
       mini-variant
       mini-variant-width="45"
@@ -16,7 +17,7 @@
           <v-list-item-avatar></v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title> Intranet Groupomania </v-list-item-title>
+            <v-list-item-title> Menu </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -94,14 +95,14 @@ a {
   color: white !important;
 }
 a:hover {
-  color: #f13e18 !important;
+  color: black !important;
   text-decoration: underline;
 }
 .lien {
   cursor: pointer;
 }
 .lien:hover {
-  color: #f13e18 !important;
+  color: black !important;
   text-decoration: underline;
 }
 </style>

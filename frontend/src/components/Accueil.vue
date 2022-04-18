@@ -7,7 +7,7 @@
       <!--ajouter un post-->
       <router-view></router-view>
       <v-container>
-        <v-btn class="ma-3" color="black white--text" @click="afficheForm">
+        <v-btn class="ma-3" color="red white--text" @click="afficheForm">
           Créer un post
         </v-btn>
 
@@ -243,15 +243,7 @@ export default {
         content: "",
         userId: "",
       },
-      // dataComS: "",
-      // dataLike: {
-      //   userId: "",
-      //   nbLikes: "",
-      //   postId: "",
-      //   liked: false,
-      // },
-      // dataLikeS: "",
-      // form: true,
+ 
     };
   },
   methods: {
@@ -421,6 +413,9 @@ export default {
 };
 </script>
 <style lang="scss">
+#forum{
+  background-color: #e8e8e8;
+}
 h1 {
   text-align: center;
 }
@@ -428,10 +423,16 @@ h1 {
   max-width: 300px;
 }
 .forum {
+ 
   &__comments {
+  
     &--ind {
       position: relative;
     }
   }
+  ;
+}
+.forum__post{
+  justify-content: center;
 }
 </style>

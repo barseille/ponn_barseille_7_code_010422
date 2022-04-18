@@ -32,12 +32,13 @@
             id="image"
             name="image"
             accept="image/png, image/jpeg, image/gif, image/webp"
+           
           />
         </v-form>
       </v-card-text>
 
       <v-card-actions>
-        <v-btn :disabled="!valid" class="success" @click="sendPost">
+        <v-btn :disabled="!valid" class="success" @click="sendPost" aria-label="poster" >
           Poster
         </v-btn>
         <v-btn text href="/Accueil" color="black">Annuler</v-btn>

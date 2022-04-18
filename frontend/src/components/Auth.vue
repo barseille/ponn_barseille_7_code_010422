@@ -1,19 +1,20 @@
 <template>
   <v-app id="auth">
-    
     <v-container class="auth">
       <div class="auth__boutons">
         <v-btn
+        aria-label="s'inscrire"
           class="auth__boutons--ind"
-          color="red white--text"
+          color="red darken-2 white--text"
           @click="component = 'signup'"
           rounded
         >
           S'inscrire
         </v-btn>
         <v-btn
+        aria-label="se connecter"
           class="auth__boutons--ind"
-          color="red white--text"
+          color="red darken-2 white--text"
           @click="component = 'login'"
           rounded
         >

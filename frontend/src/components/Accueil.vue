@@ -7,7 +7,11 @@
       <!--ajouter un post-->
       <router-view></router-view>
       <v-container>
-        <v-btn class="ma-3" color="red white--text" @click="afficheForm">
+        <v-btn
+          class="ma-3"
+          color="red darken-2 white--text"
+          @click="afficheForm"
+        >
           Créer un post
         </v-btn>
 
@@ -78,40 +82,38 @@
 
           <!--Modifier mon post-->
 
-          <button>
-            <v-dialog v-model="dialogUpPost" max-width="500px">
-              <v-card>
-                <v-card-title>Modifier mon post</v-card-title>
+          <v-dialog v-model="dialogUpPost" max-width="500px">
+            <v-card>
+              <v-card-title>Modifier mon post</v-card-title>
 
-                <v-card-text>
-                  <v-form ref="form" v-model="valid">
-                    <v-text-field
-                      v-model="dataPost.title"
-                      color="black"
-                      :rules="titleRules"
-                      :counter="50"
-                      label="Titre"
-                    ></v-text-field>
+              <v-card-text>
+                <v-form ref="form" v-model="valid">
+                  <v-text-field
+                    v-model="dataPost.title"
+                    color="black"
+                    :rules="titreRegle"
+                    :counter="50"
+                    label="Titre"
+                  ></v-text-field>
 
-                    <v-textarea
-                      v-model="dataPost.content"
-                      color="black"
-                      :rules="contentRules"
-                      label="Commentaire"
-                    ></v-textarea>
-                  </v-form>
-                </v-card-text>
+                  <v-textarea
+                    v-model="dataPost.content"
+                    color="black"
+                    :rules="contentRules"
+                    label="Commentaire"
+                  ></v-textarea>
+                </v-form>
+              </v-card-text>
 
-                <v-card-actions>
-                  <v-btn text @click="dialogUpPost = false">Annuler</v-btn>
+              <v-card-actions>
+                <v-btn text @click="dialogUpPost = false">Annuler</v-btn>
 
-                  <v-btn text :disabled="!valid" @click="updatePost()">
-                    Valider
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </button>
+                <v-btn text :disabled="!valid" @click="updatePost()">
+                  Valider
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
 
           <!--afficher les commentaires-->
 
@@ -141,7 +143,7 @@
                       <v-textarea
                         v-model="dataCom.content"
                         color="black"
-                        :rules="comContentRules"
+                        :rules="commenterPostRegle"
                         :counter="255"
                         label="Commentaire"
                       ></v-textarea>
@@ -162,22 +164,22 @@
             <!--Commenter le post-->
 
             <v-btn
-              v-if="!afficheFrmCm"
+              v-if="!commenterPost"
               color="black white--text"
               title="commenter le post"
               class="ma-2"
-              @click="afficheFormCom()"
+              @click="afficheCommenterPost()"
             >
               Commenter
             </v-btn>
 
-            <v-card v-if="afficheFrmCm">
+            <v-card v-if="commenterPost">
               <v-form ref="form" class="ma-3" v-model="valid">
                 <v-textarea
                   background-color="#ECECEC"
                   color="black"
                   v-model="dataCom.content"
-                  :rules="comContentRules"
+                  :rules="commenterPostRegle"
                   :counter="255"
                   label="Commentaire"
                   autofocus
@@ -211,21 +213,20 @@ export default {
     return {
       userId: "",
       admin: "",
-      afficheFrmCm: false,
+      commenterPost: false,
       allPosts: [],
-      // allLikes: [],
       allComments: [],
       postId: "",
       dialogUpCom: false,
       dialogUpPost: false,
       valid: true,
-      titleRules: [
+      titreRegle: [
         (v) => !!v || "Titre de la publication",
         (v) =>
           (v && v.length <= 50) || "Le titre doit faire moins de 50 caractères",
       ],
       contentRules: [(v) => !!v || "Ecrivez votre message"],
-      comContentRules: [
+      commenterPostRegle: [
         (v) => !!v || "Ecrivez votre commentaire",
         (v) =>
           (v && v.length <= 255) ||
@@ -243,13 +244,12 @@ export default {
         content: "",
         userId: "",
       },
- 
     };
   },
   methods: {
     afficheCom(pId) {
       this.postId = pId;
-      this.afficheFrmCm = false;
+      this.commenterPost = false;
       axios
         .get("http://localhost:3000/api/posts/" + pId + "/comments", {
           headers: { Authorization: "Bearer " + localStorage.token },
@@ -282,7 +282,7 @@ export default {
           console.log(rep.message);
           this.dataCom.content = "";
           this.dataCom.userId = "";
-          this.afficheFrmCm = false;
+          this.commenterPost = false;
           this.afficheCom(pId);
         })
         .catch((error) => {
@@ -377,7 +377,7 @@ export default {
           console.log(rep.message);
           this.dataCom.content = "";
           this.dataCom.userId = "";
-          this.afficheFrmCm = false;
+          this.commenterPost = false;
           this.dialogUpCom = false;
           window.location.assign("http://localhost:8080/Accueil");
         })
@@ -388,8 +388,8 @@ export default {
     afficheForm() {
       this.$router.push("/Accueil/forum/Post");
     },
-    afficheFormCom() {
-      this.afficheFrmCm = true;
+    afficheCommenterPost() {
+      this.commenterPost = true;
     },
   },
   components: {
@@ -413,7 +413,7 @@ export default {
 };
 </script>
 <style lang="scss">
-#forum{
+#forum {
   background-color: #e8e8e8;
 }
 h1 {
@@ -423,16 +423,13 @@ h1 {
   max-width: 300px;
 }
 .forum {
- 
   &__comments {
-  
     &--ind {
       position: relative;
     }
   }
-  ;
 }
-.forum__post{
+.forum__post {
   justify-content: center;
 }
 </style>

@@ -2,8 +2,7 @@
   <div class="head">
     <v-navigation-drawer
       v-model="drawer"
-      color=red
-     
+      color="red darken-2"
       expand-on-hover
       mini-variant
       mini-variant-width="45"
@@ -37,7 +36,7 @@
 
         <v-list-item v-if="this.modo == 1">
           <v-list-item-icon>
-            <v-icon>mdi-security</v-icon>
+            <v-icon aria-label="administrateur">mdi-security</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content @click="moderation" class="lien">
@@ -47,7 +46,7 @@
 
         <v-list-item>
           <v-list-item-icon>
-            <v-icon>mdi-logout-variant</v-icon>
+            <v-icon aria-label="se deconnceter">mdi-logout-variant</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content @click="logout" class="lien">

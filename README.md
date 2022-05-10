@@ -1,35 +1,56 @@
-Projet n°7 OpenClassrooms Création d'un réseau social d'entreprise pour Groupomania 
 
-Télécharger le repository et suivez les instructions ci-après pour installer ce projet en local. 
+# Création d'un réseau social d'entreprise pour l'entreprise Groupomania
 
-prérequis Installer Node.js Installer Vue.js Installer MySQL Base de données MySQL 
 
-Ouvrez votre terminal Connectez-vous à MySQL : mysql -h localhost -u root -p 
 
-Tapez votre mot de passe Créez la base de données : CREATE DATABASE groupomania_database CHARACTER SET 'utf8'; 
 
-Utilisez la base de données créée : USE groupomania_database 
 
-Dans le dossier backend, allez dans le fichier .env et renseignez votre mot de passe dans password:'xxxxxx'
 
-Installation et démarrage du Backend
 
-Ouvrez votre terminal 
+## Objectifs :
 
-Allez dans le dossier backend : cd backend 
+- Authentifier un utilisateur et maintenir sa session
+- Gérer un stockage de données à l'aide de SQL
+- Implémenter un stockage de données sécurisé en utilisant SQL
+- Personnaliser le contenu envoyé à un client web
+## Installation (Terminal)
 
-Installez toutes les dépendances du projet : npm install 
+Pré-requis : Installer Node.js et Vue.js
 
-Démarrez le serveur Node.js : nodemon server
 
-Installation et démarrage du Frontend 
+```bash
+  Installer MySql pour la base de données
+  Ouvrez votre terminal 
+  Connectez-vous à MySQL : mysql -h localhost -u root -p 
+  Tapez votre mot de passe 
+  Créez la base de données : CREATE DATABASE groupomania_database CHARACTER SET 'utf8'; 
+  Utilisez la base de données créée : USE groupomania_database  
+```
+    
+```bash
+  Installation et démarrage du Backend 
+  Allez dans le dossier backend : cd backend 
+  Installez toutes les dépendances du projet : npm install 
+  Démarrez le serveur Node.js : nodemon server
+```
 
-Ouvrez votre terminal 
+```bash
+  Installation et démarrage du Frontend 
+  Allez dans le dossier frontend : cd frontend 
+  Installez toutes les dépendances du projet : npm install 
+  Démarrez l'application : npm run serve 
+  Testez l'application
+```
 
-Allez dans le dossier frontend : cd frontend 
+Ouvrez votre navigateur et allez sur : http://localhost:8080/
+## Variables d'environnement
 
-Installez toutes les dépendances du projet : npm install 
+Dans le dossier backend, allez dans le fichier .env PASSWORD = renseigner votre mot de passe
+## 🛠 Skills
+- Vue.js
+- Node.js
+- MySQL
 
-Démarrez l'application : npm run serve Testez l'application
 
-Ouvrez votre navigateur et allez sur : http://localhost:8080/
+
+

@@ -1,5 +1,5 @@
 
-# Création d'un réseau social d'entreprise pour l'entreprise Groupomania
+# Création d'un réseau social pour l'entreprise Groupomania
 
 
 
